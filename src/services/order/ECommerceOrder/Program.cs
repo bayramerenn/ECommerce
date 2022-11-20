@@ -9,7 +9,6 @@ using FluentValidation.AspNetCore;
 using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,11 +21,11 @@ builder.Services.AddDbContext<ECommerceContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
         x => x.MigrationsAssembly("ECommerceOrder")));
 
-
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddMediatR(typeof(Program));
 
 #region EventBus
+
 var IsRunningInContainer = bool.TryParse(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"), out var inContainer) && inContainer;
 builder.Services.AddMassTransit(x =>
 {
@@ -62,6 +61,7 @@ builder.Services.AddMassTransit(x =>
         });
     });
 });
+
 #endregion EventBus
 
 builder.Services.AddControllers(opt => opt.Filters.Add<ValidationFilter>())

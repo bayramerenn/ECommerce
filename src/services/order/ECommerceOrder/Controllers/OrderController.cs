@@ -1,9 +1,5 @@
-﻿using ECommerceOrder.Features.Command;
-using ECommerceOrder.Features.Queries;
-using ECommerceOrder.Models;
-using ECommerceOrder.Persistence;
+﻿using ECommerceOrder.Features.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceOrder.Controllers
@@ -24,6 +20,5 @@ namespace ECommerceOrder.Controllers
         {
             return Ok(await _mediator.Send(new GetListOrderRequest()));
         }
-
     }
 }

@@ -1,7 +1,4 @@
-﻿using ECommerceBasket.Dtos;
-using ECommerceBasket.Dtos;
-using ECommerceBasket.Model;
-using StackExchange.Redis;
+﻿using ECommerceBasket.Model;
 using System.Text.Json;
 
 namespace ECommerceBasket.Services
@@ -17,7 +14,7 @@ namespace ECommerceBasket.Services
 
         public async Task<bool> Save(Basket[] basket)
         {
-            var data = JsonSerializer.Serialize(new { UId = Guid.NewGuid().ToString(),Basket = basket });
+            var data = JsonSerializer.Serialize(new { UId = Guid.NewGuid().ToString(), Basket = basket });
             string basketId = basket.FirstOrDefault().BasketId;
             var result = await _redisService.GetDb().StringSetAsync(basketId, JsonSerializer.Serialize(basket));
             return result;
@@ -38,7 +35,5 @@ namespace ECommerceBasket.Services
             }
             return new Basket[0];
         }
-
-       
     }
 }

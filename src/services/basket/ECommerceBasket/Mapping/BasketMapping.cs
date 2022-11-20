@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ECommerceBasket.Dtos;
-using ECommerceCommon.EventBusModel;
 using ECommerceBasket.Model;
+using ECommerceCommon.EventBusModel;
 
 namespace ECommerceBasket.Mapping
 {

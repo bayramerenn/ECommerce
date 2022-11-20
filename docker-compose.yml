@@ -6,21 +6,21 @@ services:
     image: redis
   rabbitmq:
     image: rabbitmq:3-management
-  # basket.api:
-  #   image: basket_api
-  #   build:
-  #     context: .
-  #     dockerfile: src/services/basket/ECommerceBasket/Dockerfile
-  # order.api:
-  #   image: order_api
-  #   build:
-  #     context: .
-  #     dockerfile: src/services/order/ECommerceOrder/Dockerfile
-  # gateway:
-  #   image: gateway_api
-  #   build:
-  #     context: .
-  #     dockerfile: src/gateway/ECommerceGateway/Dockerfile
+  basket.api:
+    image: basket_api
+    build:
+      context: .
+      dockerfile: src/services/basket/ECommerceBasket/Dockerfile
+  order.api:
+    image: order_api
+    build:
+      context: .
+      dockerfile: src/services/order/ECommerceOrder/Dockerfile
+  gateway:
+    image: gateway_api
+    build:
+      context: .
+      dockerfile: src/gateway/ECommerceGateway/Dockerfile
 volumes:
   orderdb_volume:
 

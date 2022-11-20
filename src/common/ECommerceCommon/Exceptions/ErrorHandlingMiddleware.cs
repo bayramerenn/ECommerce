@@ -30,6 +30,7 @@ namespace ECommerceCommon.Exceptions
                 await HandleExceptionAsync(context, ex);
             }
         }
+
         //ArgumentNullException
         private static async Task HandleExceptionAsync(
             HttpContext context,

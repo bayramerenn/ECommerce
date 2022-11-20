@@ -1,5 +1,4 @@
-﻿using ECommerceBasket.Features.Queries;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace ECommerceBasket.Features.Queries.Validators
 {

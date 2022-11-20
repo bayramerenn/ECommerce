@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ECommerceBasket.Services;
 using ECommerceCommon.Contants;
 using ECommerceCommon.EventBusModel;
 using ECommerceCommon.Exceptions;
-using ECommerceBasket.Services;
 using MassTransit;
 using MediatR;
 
@@ -24,8 +24,8 @@ namespace ECommerceBasket.Features.Command
         public async Task<CreateOrderResponse> Handle(CreateOrderRequest request, CancellationToken cancellationToken)
         {
             var basket = await _basketService.Get(request.BasketId);
-            
-            if(basket == null || basket.Length == 0)
+
+            if (basket == null || basket.Length == 0)
                 throw new RestException(System.Net.HttpStatusCode.NotFound, new { invoice = Messages.NotFoundBasketError(request.BasketId) });
 
             var orderCreateEvent = _mapper.Map<OrderCreateEvent[]>(basket);

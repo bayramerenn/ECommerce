@@ -2,7 +2,7 @@
 
 namespace ECommerceBasket.Features.Command
 {
-    public class CreateOrderResponse:BaseResponse
+    public class CreateOrderResponse : BaseResponse
     {
     }
 }

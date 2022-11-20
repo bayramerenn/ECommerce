@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace ECommerceOrder.Persistence
+﻿namespace ECommerceOrder.Persistence
 {
     public class DbInitializer
     {

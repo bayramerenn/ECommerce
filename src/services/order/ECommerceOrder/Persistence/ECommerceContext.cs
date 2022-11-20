@@ -8,8 +8,8 @@ namespace ECommerceOrder.Persistence
     {
         public ECommerceContext(DbContextOptions<ECommerceContext> options) : base(options)
         {
-         
         }
+
         public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -13,6 +13,5 @@
         public static string SuccessEventOrderCreate = "Siparişler başarıyla oluşturuldu.";
         public static string SuccessOrderCreate = "Siparişler başarıyla oluşturuldu.";
         public static string OrderNullError = "Sipariş listesi bulunamadı.";
-
     }
 }

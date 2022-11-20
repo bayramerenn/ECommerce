@@ -2,7 +2,7 @@
 
 namespace ECommerceBasket.Features.Command
 {
-    public class DeleteBasketResponse:BaseResponse
+    public class DeleteBasketResponse : BaseResponse
     {
     }
 }

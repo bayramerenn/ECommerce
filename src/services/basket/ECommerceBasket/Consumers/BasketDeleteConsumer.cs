@@ -1,5 +1,5 @@
-﻿using ECommerceCommon.EventBusModel;
-using ECommerceBasket.Features.Command;
+﻿using ECommerceBasket.Features.Command;
+using ECommerceCommon.EventBusModel;
 using MassTransit;
 using MediatR;
 
@@ -16,7 +16,7 @@ namespace ECommerceBasket.Consumers
 
         public async Task Consume(ConsumeContext<BasketDeleteEvent> context)
         {
-            await _mediator.Send(new DeleteBasketRequest { BasketId = context.Message.BasketId});
+            await _mediator.Send(new DeleteBasketRequest { BasketId = context.Message.BasketId });
         }
     }
 }

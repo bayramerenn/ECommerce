@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using ECommerceCommon.Contants;
-using ECommerceCommon.Exceptions;
 using ECommerceBasket.Model;
 using ECommerceBasket.Services;
+using ECommerceCommon.Contants;
+using ECommerceCommon.Exceptions;
 using MediatR;
 
 namespace ECommerceBasket.Features.Command
@@ -11,7 +11,6 @@ namespace ECommerceBasket.Features.Command
     {
         private readonly IBasketService _basketService;
         private IMapper _mapper;
-        
 
         public CreateBasketHandler(IBasketService basketService, IMapper mapper)
         {

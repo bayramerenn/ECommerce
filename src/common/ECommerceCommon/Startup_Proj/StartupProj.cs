@@ -5,7 +5,7 @@ namespace ECommerceCommon.Startup_Proj
 {
     public static class StartupProj
     {
-        public static void AddSerilog(WebApplicationBuilder builder,string connectionString)
+        public static void AddSerilog(WebApplicationBuilder builder, string connectionString)
         {
             builder.Host.UseSerilog((hostingContext, loggerConfig) =>
             loggerConfig

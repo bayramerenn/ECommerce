@@ -1,6 +1,6 @@
-﻿using ECommerceCommon.Contants;
+﻿using ECommerceBasket.Services;
+using ECommerceCommon.Contants;
 using ECommerceCommon.Exceptions;
-using ECommerceBasket.Services;
 using MediatR;
 
 namespace ECommerceBasket.Features.Command

@@ -1,5 +1,4 @@
-﻿using ECommerceBasket.Dtos;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace ECommerceBasket.Features.Command.Validators
 {

@@ -5,6 +5,7 @@
         public string BasketId { get; set; }
         public OrderCreateEvent[] OrderCreateEvents { get; set; }
     }
+
     public class OrderCreateEvent
     {
         public int CustomerId { get; set; }

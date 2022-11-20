@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using ECommerceBasket.Dtos;
+using ECommerceBasket.Services;
 using ECommerceCommon.Contants;
 using ECommerceCommon.Exceptions;
-using ECommerceBasket.Services;
 using MediatR;
 
 namespace ECommerceBasket.Features.Queries
