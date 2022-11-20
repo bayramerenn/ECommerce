@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Text.Json;
 
@@ -7,12 +8,14 @@ namespace ECommerceCommon.Exceptions
     public class ErrorHandlingMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<ErrorHandlingMiddleware> _logger;
 
         public ErrorHandlingMiddleware(
-            RequestDelegate next)
+            RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger = null)
 
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -23,6 +26,7 @@ namespace ECommerceCommon.Exceptions
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message);
                 await HandleExceptionAsync(context, ex);
             }
         }
@@ -33,6 +37,7 @@ namespace ECommerceCommon.Exceptions
         )
         {
             string? result = null;
+
             switch (exception)
             {
                 case RestException re:

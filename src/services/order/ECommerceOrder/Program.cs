@@ -9,6 +9,7 @@ using FluentValidation.AspNetCore;
 using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

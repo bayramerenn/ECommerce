@@ -6,8 +6,8 @@
       "SwaggerKey": "order",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5012
+          "Host": "order.api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Order/{everything}",
@@ -25,8 +25,8 @@
       "SwaggerKey": "basket",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5011
+          "Host": "basket.api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Basket/{everything}",
@@ -41,6 +41,6 @@
   ],
 
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
+    "BaseUrl": "http://gateway.api"
   }
 }

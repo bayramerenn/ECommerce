@@ -1,16 +1,13 @@
-using ECommerceBasket.Common;
+using ECommerceBasket.Consumers;
+using ECommerceBasket.Services;
+using ECommerceCommon.Contants;
 using ECommerceCommon.Exceptions;
 using ECommerceCommon.Filters;
-using ECommerceBasket.Consumers;
-using ECommerceBasket.Features.Command.Validators;
-using ECommerceBasket.Services;
+using ECommerceCommon.Startup_Proj;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MassTransit;
 using MediatR;
-using Microsoft.Extensions.Options;
-using ECommerceCommon.Contants;
-using ECommerceCommon.Startup_Proj;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,11 +25,9 @@ builder.Services.AddMediatR(typeof(Program));
 
 #region redis
 
-builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings"));
 builder.Services.AddSingleton<RedisService>(sp =>
 {
-    var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
-    var redis = new RedisService(redisSettings.Host, redisSettings.Port);
+    var redis = new RedisService(builder.Configuration.GetSection("RedisConfig").Value);
     redis.Connect();
     return redis;
 });
@@ -40,7 +35,8 @@ builder.Services.AddSingleton<RedisService>(sp =>
 #endregion redis
 
 #region EventBus
- var IsRunningInContainer = bool.TryParse(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"), out var inContainer) && inContainer;
+
+var IsRunningInContainer = bool.TryParse(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"), out var inContainer) && inContainer;
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<BasketDeleteConsumer>();
