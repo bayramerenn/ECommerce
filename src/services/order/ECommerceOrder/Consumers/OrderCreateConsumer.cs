@@ -24,7 +24,7 @@ namespace ECommerceOrder.Consumers
 
             try
             {
-                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:delete-basket-service"));
+                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri(EventBusConstans.QueueDeleteBasketSend));
                 await sendEndpoint.Send<BasketDeleteEvent>(new BasketDeleteEvent { BasketId = context.Message.BasketId });
             }
             catch

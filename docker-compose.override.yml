@@ -1,0 +1,58 @@
+version: "3.9"
+services:
+  orderdb:
+    container_name: orderdb
+    restart: always
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data:/var/opt/mssql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password12-*
+      - MSSQL_PID=Express
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "8080:15672"
+  basket.api:
+    container_name: basket.api
+    restart: always
+    environment:
+      - RedisConnection=basketdb
+      - "ConnectionStrings:DefaultConnection=Data Source=orderdb,1433;Initial Catalog=ECommerceDb;User ID=sa;Password=Password12-*"
+    ports:
+      - "5011:80"
+    links:
+      - "basketdb"
+    depends_on:
+      - basketdb 
+      - rabbitmq
+  order.api:
+    container_name: order.api
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:DefaultConnection=Data Source=orderdb,1433;Initial Catalog=ECommerceDb;User ID=sa;Password=Password12-*"
+    ports:
+      - "5012:80"
+    depends_on:
+      - orderdb 
+      - rabbitmq
+  gateway:
+    container_name: gateway_api
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - "ConnectionStrings:DefaultConnection=Data Source=orderdb,1433;Initial Catalog=ECommerceDb;User ID=sa;Password=Password12-*"
+    ports:
+      - "5000:80"
+    
+

@@ -31,7 +31,7 @@ namespace ECommerceBasket.Features.Command
             var orderCreateEvent = _mapper.Map<OrderCreateEvent[]>(basket);
             try
             {
-                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:create-order-service"));
+                var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri(EventBusConstans.QueueCreateOrderSend));
                 var resource = new OrderCreateEventResource
                 {
                     BasketId = request.BasketId,
@@ -46,7 +46,7 @@ namespace ECommerceBasket.Features.Command
             }
             return new CreateOrderResponse
             {
-                Message = Messages.SuccessCreateBasket,
+                Message = Messages.SuccessOrderCreate,
                 Success = true
             };
         }

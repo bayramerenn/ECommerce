@@ -14,7 +14,7 @@ namespace ECommerceCommon.Startup_Proj
                 tableName: "Logs",
                 schemaName: "dbo",
                 autoCreateSqlTable: true,
-                restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Error
+                restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information
                 )
             );
         }

@@ -30,7 +30,7 @@ namespace ECommerceBasket.Features.Command
 
             return new CreateBasketResponse
             {
-                Message = Messages.SuccessEventOrderCreate,
+                Message = Messages.SuccessCreateBasket,
                 Success = true
             };
         }
