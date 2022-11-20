@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "c1bbb927-2e00-4265-9b80-7a9730cbea36",
+		"name": "ECommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14023399"
+	},
+	"item": [
+		{
+			"name": "Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/Order/api/Order/Get"
+			},
+			"response": []
+		},
+		{
+			"name": "GetByIdBasket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/Basket/api/Basket/Get"
+			},
+			"response": []
+		},
+		{
+			"name": "OrderCreate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"basketId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/Basket/api/Basket/CreateOrder"
+			},
+			"response": []
+		},
+		{
+			"name": "BasketSave",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": [\r\n    {\r\n      \"basketId\": \"2\",\r\n      \"customerId\": 10,\r\n      \"productName\": \"Test\",\r\n      \"createdAt\": \"2022-11-19T17:07:58.287Z\",\r\n      \"quantity\": 30,\r\n      \"price\": 30\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/Basket/api/Basket/Save"
+			},
+			"response": []
+		}
+	]
+}
