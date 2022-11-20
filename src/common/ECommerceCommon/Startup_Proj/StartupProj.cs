@@ -13,7 +13,7 @@ namespace ECommerceCommon.Startup_Proj
                 connectionString: connectionString,
                 tableName: "Logs",
                 schemaName: "dbo",
-                autoCreateSqlTable: true,
+                autoCreateSqlTable: false,
                 restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information
                 )
             );

@@ -11,10 +11,12 @@ namespace ECommerceOrder.Persistence
         }
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new OrderMap());
+            modelBuilder.ApplyConfiguration(new LogMap());
             base.OnModelCreating(modelBuilder);
         }
     }

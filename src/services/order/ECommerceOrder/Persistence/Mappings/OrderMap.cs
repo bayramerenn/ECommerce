@@ -14,7 +14,7 @@ namespace ECommerceOrder.Persistence.Mappings
             builder.Property(x => x.ProductName).HasColumnType("NVARCHAR(MAX)");
             builder.Property(x => x.CreatedAt);
             builder.Property(x => x.Quantity);
-            builder.Property(x => x.Price);
+            builder.Property(x => x.Price).HasColumnType("decimal(18, 2)");
             builder.ToTable("Orders");
         }
     }
