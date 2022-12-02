@@ -22,6 +22,17 @@ services:
     ports:
       - "5672:5672"
       - "8080:15672"
+  ecommercedb:
+    container_name: ecommercedb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ecommercedb_volume:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Password12*
+      - POSTGRES_DB=discountdb
   # basket.api:
   #   container_name: basket.api
   #   restart: always

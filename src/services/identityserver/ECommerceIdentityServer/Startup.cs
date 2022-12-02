@@ -32,9 +32,10 @@ namespace ECommerceIdentityServer
         {
             services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
+            services.AddSwaggerGen();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("PostgreConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -83,6 +84,8 @@ namespace ECommerceIdentityServer
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseStaticFiles();
 
