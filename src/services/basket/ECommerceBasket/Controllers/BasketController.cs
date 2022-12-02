@@ -1,11 +1,13 @@
 ﻿using ECommerceBasket.Features.Command;
 using ECommerceBasket.Features.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceBasket.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     public class BasketController : ControllerBase
     {

@@ -49,6 +49,17 @@ namespace ECommerceIdentityServer
 
                     var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
+                    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+
+                    if (!roleManager.Roles.Any())
+                    {
+                        roleManager.CreateAsync(new IdentityRole
+                        {
+                            Name = "Admin"
+                        }).Wait();
+                    }
+
                     if (!userManager.Users.Any())
                     {
                         var user = new ApplicationUser
@@ -58,6 +69,7 @@ namespace ECommerceIdentityServer
                             Locale = "TR",
                         };
                         userManager.CreateAsync(user, "Password12*").Wait();
+                        userManager.AddToRoleAsync(user, "Admin").Wait();
                     }
 
                     Log.Information("DB migrate");

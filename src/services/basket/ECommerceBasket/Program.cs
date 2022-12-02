@@ -8,6 +8,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,20 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddMediatR(typeof(Program));
+
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+//                {
+//                    options.Authority = "https://localhost:5001";
+//                    options.Audience = "basket_catalog";
+//                });
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = "https://localhost:5001";
+    options.Audience = "resource_basket";
+    options.RequireHttpsMetadata = false;
+});
 
 #region redis
 
@@ -87,6 +102,8 @@ var app = builder.Build();
 app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
